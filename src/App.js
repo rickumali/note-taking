@@ -15,6 +15,11 @@ const App = () => {
     e.target.note.value = "";
   }
 
+  const deleteNote = (idToDelete) => {
+    const filterNotes = notes.filter((note) => note.id !== idToDelete);
+    setNotes(filterNotes);
+  }
+
   return (
     <div className="App">
       <h1>localStorage Demo</h1>
@@ -23,7 +28,11 @@ const App = () => {
         <input type="Submit" />
       </form>
       {
-        notes.map((note) => <div key={note.id}>{note.text}</div>)
+        notes.map((note) => (
+          <div key={note.id}>
+            <div>{note.text}</div>
+            <button onClick={() => deleteNote(note.id)}>delete</button>
+          </div>))
       }
     </div>
   );
