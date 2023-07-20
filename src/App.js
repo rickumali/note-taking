@@ -22,6 +22,9 @@ const App = () => {
         <input type="text" name="note" />
         <input type="Submit" />
       </form>
+      {
+        notes.map((note) => <div key={note.id}>{note.text}</div>)
+      }
     </div>
   );
 };
