@@ -5,6 +5,11 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [noteEditing, setNoteEditing] = useState("");
 
+  useEffect(() => {
+    const json = JSON.stringify(notes);
+    localStorage.setItem("notes", json);
+  }, [notes])
+
   const addNote = (e) => {
     e.preventDefault();
     const newNote = {
