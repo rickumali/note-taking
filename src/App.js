@@ -6,11 +6,6 @@ const App = () => {
   const [noteEditing, setNoteEditing] = useState("");
 
   useEffect(() => {
-    const json = JSON.stringify(notes);
-    localStorage.setItem("notes", json);
-  }, [notes])
-
-  useEffect(() => {
     const json = localStorage.getItem("notes");
     const savedNotes = JSON.parse(json);
     if (savedNotes) {
@@ -25,6 +20,8 @@ const App = () => {
       text: e.target.note.value,
     };
     setNotes([...notes, newNote]);
+    const json = JSON.stringify([...notes, newNote]);
+    localStorage.setItem("notes", json);
     e.target.note.value = "";
   }
 
