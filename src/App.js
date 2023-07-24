@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const App = ({fromStorage}) => {
-  const [notes, setNotes] = useState(JSON.parse(fromStorage));
+const App = ({notesFromStorage}) => {
+  const [notes, setNotes] = useState(JSON.parse(notesFromStorage));
   const [noteEditing, setNoteEditing] = useState("");
 
   useEffect(() => {
