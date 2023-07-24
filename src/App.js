@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const App = () => {
-  const [notes, setNotes] = useState([]);
+const App = ({fromStorage}) => {
+  const [notes, setNotes] = useState(JSON.parse(fromStorage));
   const [noteEditing, setNoteEditing] = useState("");
 
   useEffect(() => {
-    const json = localStorage.getItem("notes");
-    const savedNotes = JSON.parse(json);
-    if (savedNotes) {
-      setNotes(savedNotes);
-    }
-  }, []);
-  
+    const json = JSON.stringify(notes);
+    localStorage.setItem("notes", json);
+  }, [notes])
+
   const addNote = (e) => {
     e.preventDefault();
     const newNote = {
@@ -20,8 +17,6 @@ const App = () => {
       text: e.target.note.value,
     };
     setNotes([...notes, newNote]);
-    const json = JSON.stringify([...notes, newNote]);
-    localStorage.setItem("notes", json);
     e.target.note.value = "";
   }
 
