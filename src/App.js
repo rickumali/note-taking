@@ -45,8 +45,15 @@ const App = ({ notesFromStorage }) => {
     <div className="App">
       <h1>Rick's Note Taker</h1>
       <form onSubmit={addNote}>
-        <input type="text" name="note" />
-        <input type="Submit" />
+        <ul>
+          <li>
+            <label for="note">Note: </label>
+            <input type="text" name="note" />
+          </li>
+          <li>
+            <input type="Submit" />
+          </li>
+        </ul>
       </form>
       {
         notes.map((note) => (
