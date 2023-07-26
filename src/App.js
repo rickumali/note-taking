@@ -43,7 +43,7 @@ const App = ({ notesFromStorage }) => {
 
   return (
     <div className="App">
-      <h1>localStorage Demo</h1>
+      <h1>Rick's Note Taker</h1>
       <form onSubmit={addNote}>
         <input type="text" name="note" />
         <input type="Submit" />
