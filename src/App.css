@@ -72,3 +72,27 @@ ul {
 form li + li {
   margin-top: 1em;
 }
+
+div.note {
+  /* Center the div on the page */
+  margin: 0 auto;
+  width: 360px;
+  /* Form outline */
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+
+div.note form {
+  /* Center the inner form on the page */
+  margin: 0 auto;
+  width: 320px;
+  /* Form outline */
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+}
+
+div.note ul.noteButtons button {
+  margin: 3px;
+}

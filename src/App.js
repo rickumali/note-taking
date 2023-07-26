@@ -51,23 +51,33 @@ const App = ({ notesFromStorage }) => {
             <input type="text" name="note" />
           </li>
           <li>
-            <input type="Submit" />
+            <input type="submit" />
           </li>
         </ul>
       </form>
+      <hr />
       {
         notes.map((note) => (
-          <div key={note.id}>
+          <div className='note' key={note.id}>
             {note.id !== noteEditing ? (
-              <div>{note.text}</div>
+              <p>{note.text}</p>
             ) : (
               <form onSubmit={(e) => submitEdits(e, note.id)}>
-                <textarea name="note" defaultValue={note.text}></textarea>
-                <button type="submit">Submit Edits</button>
+                <ul>
+                  <li>
+                    <label for="note">Note: </label>
+                    <textarea name="note" defaultValue={note.text}></textarea>
+                  </li>
+                  <li><button type="submit">Submit Edits</button></li>
+                </ul>
               </form>
             )}
-            <button onClick={() => deleteNote(note.id)}>delete</button>
-            <button onClick={() => setNoteEditing(note.id)}>edit</button>
+            <ul className="noteButtons">
+              <li>
+                <button onClick={() => deleteNote(note.id)}>Delete</button>
+                <button onClick={() => setNoteEditing(note.id)}>Edit</button>
+              </li>
+            </ul>
           </div>
         ))
       }
