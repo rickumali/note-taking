@@ -27,7 +27,18 @@ const App = ({ notesFromStorage }) => {
 
   const submitEdits = (event, idToEdit) => {
     event.preventDefault();
-    console.log("submitEdits")
+    const updatedNotes = notes.map((note) => {
+      if (note.id === idToEdit) {
+        return {
+          id: note.id,
+          text: event.target.note.value,
+        }
+      } else {
+        return note;
+      }
+    });
+    setNotes(updatedNotes);
+    setNoteEditing("");
   }
 
   return (
