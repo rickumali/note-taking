@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const App = ({notesFromStorage}) => {
+const App = ({ notesFromStorage }) => {
   const [notes, setNotes] = useState(JSON.parse(notesFromStorage));
   const [noteEditing, setNoteEditing] = useState("");
 
@@ -25,6 +25,11 @@ const App = ({notesFromStorage}) => {
     setNotes(filterNotes);
   }
 
+  const submitEdits = (event, idToEdit) => {
+    event.preventDefault();
+    console.log("submitEdits")
+  }
+
   return (
     <div className="App">
       <h1>localStorage Demo</h1>
@@ -35,9 +40,18 @@ const App = ({notesFromStorage}) => {
       {
         notes.map((note) => (
           <div key={note.id}>
-            <div>{note.text}</div>
+            {note.id !== noteEditing ? (
+              <div>{note.text}</div>
+            ) : (
+              <form onSubmit={(e) => submitEdits(e, note.id)}>
+                <textarea name="note" defaultValue={note.text}></textarea>
+                <button type="submit">Submit Edits</button>
+              </form>
+            )}
             <button onClick={() => deleteNote(note.id)}>delete</button>
-          </div>))
+            <button onClick={() => setNoteEditing(note.id)}>edit</button>
+          </div>
+        ))
       }
     </div>
   );
