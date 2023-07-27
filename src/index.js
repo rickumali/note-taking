@@ -5,7 +5,7 @@ import App from './App';
 
 let notesJson = "[]";
 if (typeof window !== 'undefined') { // Check if we're running in the browser.
-  notesJson = localStorage.getItem("notes");
+  notesJson = localStorage.getItem("notes") || "[]";
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
