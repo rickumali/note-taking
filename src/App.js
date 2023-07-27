@@ -47,7 +47,7 @@ const App = ({ notesFromStorage }) => {
       <form onSubmit={addNote}>
         <ul>
           <li>
-            <label for="note">Note: </label>
+            <label htmlFor="note">Note: </label>
             <input type="text" name="note" />
           </li>
           <li>
@@ -65,7 +65,7 @@ const App = ({ notesFromStorage }) => {
               <form onSubmit={(e) => submitEdits(e, note.id)}>
                 <ul>
                   <li>
-                    <label for="note">Note: </label>
+                    <label htmlFor="note">Note: </label>
                     <textarea name="note" defaultValue={note.text}></textarea>
                   </li>
                   <li><button type="submit">Submit Edits</button></li>
